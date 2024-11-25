@@ -245,16 +245,25 @@ form input,form select{
     }
   
     .content {
-      margin-left: -250px;
+      margin-left: -100px;
     }
   }
-  @media screen and (min-width: 1200px) {
+  @media screen and (max-width: 1200px) {
     .sidebar {
       width: 200px;
     }
   
     .content {
-      margin-left: -450px;
+      margin-left: -360px;
+    }
+  }
+  @media screen and (max-width: 200px) {
+    .sidebar {
+      width: 200px;
+    }
+  
+    .content {
+      margin-left: -50px;
     }
   }
   
