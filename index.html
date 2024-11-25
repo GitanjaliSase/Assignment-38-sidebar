@@ -4,12 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sidebar</title>
+    <script src="https://kit.fontawesome.com/5aa42e6115.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
     <h1>Luxury Hotel Booking</h1>
-      
+    <div class="sidebar">
+        <div class="sidebar-header">
+          <h2>My Sidebar</h2>
+          <button class="close-btn" onclick="closeSidebar()">×</button>
+        </div>
+        <ul>
+          <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
+          <li><a href="#"><i class="fas fa-cogs"></i> Settings</a></li>
+          <li><a href="#"><i class="fas fa-envelope"></i> Messages</a></li>
+          <li><a href="#"><i class="fas fa-question-circle"></i> Help</a></li>
+        </ul>
+      </div>
+    
+      <div class="content">
+        <button class="open-btn" onclick="openSidebar()">☰ Open Sidebar</button>
+      </div>
+    
 </div>
 
 <div id="home">
