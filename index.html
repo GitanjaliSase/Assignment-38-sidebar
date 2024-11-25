@@ -3,9 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sidebar</title>
+<style>
+    body{
+        font-family: arial;
+        margin: 0;
+        padding: 0;
+        color:#333;
+    }
+    .container {
+        width: 100%;
+        margin:auto;
+        background: #333;
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+        border-radius: 5px 5px 5px 5px;
+    }
+    .nav{
+        padding: 0;
+        
+    }
+    .navbar{
+        margin: 0 25px;
+        color: white;
+        text-decoration-line:none;
+    }
+    h1,h2,h3{
+        margin-top: 0;
+    }
+    #home,#rooms,#booking,#contact{
+        padding: 30px 0;
+        text-align: center;
+        margin: auto;
+        width: 90%;
+    }
+    .room-grid{
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    .room{
+        width: 30%;
+        margin: 15px 0;
+    }
+    .room img{
+        width: 100%;
+        border-radius: 10px;
+        height: 300px;
+    }
+   form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   }
+   form label{
+    margin-top: 10px;
+    font-weight: bold;
+   }
+   form input, form select{
+    width: 60%;
+    padding: 10px;
+    margin: 5px 0;
+   }
+   form button{
+    background: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+   }
+   form button:hover{
+    background:#45a049;
+   }
+   footer{
+    background: #333;
+    color:white;
+    text-align: center;
+    padding: 10px 0;
+   }
+   .overlay{
+    background-color:rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+   }
+   .modal{
+    background-color: #fff;
+    height:250px ;
+    width: 400px;
+   }
+   .dialog-content{
+    padding: 10px;
+   }
+   .Cancel{
+        background-color: red;
+        margin: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    .Confirm{
+        margin-left: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    .correct{
+        background-color: aliceblue;
+        height: 50px;
+        margin-top: -10px;
+    }
+   @media (min-width: 768px) and (max-width: 1024px){
+    .container{
+        width: 90%;
+    }
+    .navbar{
+        display: block;
+        margin: 5px 0;
+    }
+    .room-grid{
+    flex-direction: column;
+    align-items: center;
+    }
+    .room{
+        width: 80%;
+    }
+    form input,form select{
+        width: 90%;
+    }
+   }
+
+    @media (min-width: 480px) and (max-width: 767px){
+        .container h1{
+            font-size: 29px;
+        }
+        .room{
+            width: 100%;
+        }
+    }
+
+    @media(max-width:479px){
+        h1{
+            font-size: 24px;
+        }
+        .room{
+            width: 100%;
+        }
+        form input,form select{
+        width: 90%;
+       }
+    }
+    
+</style>
 </head>
 <body>
-    
+<div class="container">
+    <h1>Luxury Hotel Booking</h1>
+      <div class="nav">
+        <a href="#home" class="navbar">Home</a>
+        <a href="#rooms"  class="navbar">Rooms</a>
+        <a href="#booking"  class="navbar">Booking</a>
+        <a href="#contact"  class="navbar">Contact</a>
+      </div>
+</div>
+
+<div id="home">
+    <h2>Welcome to Our Luxury Hotel</h2>
+    <p>Experience the finest hospitality with our range of luxurious rooms and top-notch services.Book your stay with us today!</p>
+</div>
+
+<div id="rooms">
+    <h2>Our Rooms</h2>
+    <div class="room-grid">
+        <div class="room">
+            <img src="./images/deluxe-room.jpeg">
+            <h3>Deluxe Room</h3>
+             <p>Spacious and comfortable with additional amenities.</p>
+        </div>
+        <div class="room">
+            <img src="./images/standard-room.jpeg">
+            <h3>Standard Room</h3>
+             <p>Cozy and affordable, perfect for budget-conscious travelers.</p>
+        </div>
+        <div class="room">
+            <img src="./images/suite-room.jpeg">
+            <h3>Suite</h3>
+             <p>Experience luxury with our exclusive suites.</p>
+        </div>    
+    </div>
+</div>
+
+<div id="booking">
+    <h2>Book your stay</h2>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        <label for="checkin">Check-in Date:</label>
+        <input type="date" id="checkin" required>
+        <label for="checkout">Check-out Date:</label>
+        <input type="date" id="checkout" required>
+        <label for="room-type">Room Type:</label>
+        <select id="room-type" required>
+            <option>Standard Room</option>
+            <option>Deluxe Room</option>
+            <option>Suite Room</option>
+        </select>
+        <button type="button" onclick="openModal()">Book Now</button>
+        <div class="overlay" id="overlay">
+            <div class="modal"><br>
+                <div class="dialog-content">
+                    <div class="correct"><br>
+                <h3>All details are correct ✔️</h3>
+                </div><br>
+                <h1>Confirm Booking</h1>
+                <button class="Confirm" onclick="closeModel()">Confirm</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                <button class="Cancel" onclick="closeModel()">Cancel</button>
+            </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div id="contact">
+    <h2>Contact Us</h2>
+    <p>Visit us at 456 Hotel Avenue, city, or call us at 3490098023.</p>
+</div>
+
+<footer>
+<div>
+    <p>&copy; 2024 Luxury Hotel Booking. All rights reserved.</p>
+</div>
+</footer>
+<script>
+    function openModal(){
+        const overlayElement=document.getElementById('overlay');
+        overlayElement.style.display = 'flex';
+    }
+    function closeModel(){
+        const overlayElement=document.getElementById('overlay');
+        overlayElement.style.display = "none";
+    }
+</script>
 </body>
 </html>
